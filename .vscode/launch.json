@@ -1,11 +1,30 @@
 {
-    "version": "0.2.0",
-    "configurations": [
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to .NET Functions",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:azureFunctions.pickProcess}"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/15714/AppData/Local/Temp/9a3784c6-2849-4a2c-807f-5d77a58c96aa_lab5_bnguye65_205.tar.6aa/lab5_bnguye65_205",
+      "program": "c:/Users/15714/AppData/Local/Temp/9a3784c6-2849-4a2c-807f-5d77a58c96aa_lab5_bnguye65_205.tar.6aa/lab5_bnguye65_205/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
         {
-            "name": "Attach to .NET Functions",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:azureFunctions.pickProcess}"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ]
+    }
+  ]
 }
