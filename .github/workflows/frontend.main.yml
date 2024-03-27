@@ -21,6 +21,7 @@ jobs:
       - name: Upload to blob storage
         uses: azure/CLI@v1
         with:
+          azcliversion: latest
           inlineScript: |
             az storage blob upload-batch --account-name azureresumeacg --auth-mode key -d '$web' -s frontend/
 
