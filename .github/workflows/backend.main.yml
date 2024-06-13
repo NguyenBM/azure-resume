@@ -40,9 +40,20 @@ jobs:
        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/tests'
        dotnet test
 
+    - name: Retrieve publish profile for deployment
+      id: publishProfileRetrieval
+      run: |
+        publishProfiles=$(az webapp deployment list-publishing-profiles \
+         --name "GetResumeCounter" \
+         --resource-group "azureresume-rg" \
+         --subscription "f45ae410-9df7-4400-8f29-12a6185e07d1" --xml)
+         echo "::add-mask::$publishProfiles"
+         echo "::set-output name=publishProfiles::$publishProfiles"
+
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
       id: fa
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/api'
+        publish-profile: ${{ steps.publishProfileRetrieval.outputs.publishProfiles }}
