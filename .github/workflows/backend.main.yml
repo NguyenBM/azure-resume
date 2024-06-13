@@ -43,14 +43,14 @@ jobs:
     - name: Retrieve publish profile for deployment
       id: publishProfileRetrieval
       run: |
-        Import-Module publishProfiles=$(az webapp deployment list-publishing-profiles \
+        Import-Module publishProfiles='$(az webapp deployment list-publishing-profiles \
          --name "GetResumeCounter" \
          --resource-group "azureresume-rg" \
-         --subscription "f45ae410-9df7-4400-8f29-12a6185e07d1" --xml)
+         --subscription "f45ae410-9df7-4400-8f29-12a6185e07d1" --xml)'
          echo "::add-mask::$publishProfiles"
          echo "::set-output name=publishProfiles::$publishProfiles"
 
-    - name: 'Run Azure Functions Action'
+    - name: 'Run Azure Functions Action
       uses: Azure/functions-action@v1
       id: fa
       with:
