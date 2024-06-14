@@ -45,7 +45,7 @@ jobs:
       id: publishProfileRetrieval
       shell: pwsh
       run: |
-        $publishProfiles = az webapp deployment list-publishing-profiles --name "GetResumeCounter" --resource-group "azureresume-rg" --subscription "f45ae410-9df7-4400-8f29-12a6185e07d1" --query "[0].publishProfile" -o tsv
+        $publishProfiles = az webapp deployment list-publishing-profiles --name "GetResumeCounter-bnguye65" --resource-group "azureresume-rg" --subscription "f45ae410-9df7-4400-8f29-12a6185e07d1" --query "[0].publishProfile" -o tsv
         echo "::add-mask::$publishProfiles"
         echo "::set-output name=publishProfiles::$publishProfiles"
 
